@@ -1,0 +1,28 @@
+openapi: 3.0.3
+info:
+  title: Inline number enum
+  version: 1.0.0
+paths:
+  /recording:
+    get:
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Recording"
+components:
+  schemas:
+    Recording:
+      type: object
+      required: [plays, speed]
+      properties:
+        plays:
+          type: integer
+          enum: [1, 2]
+        speed:
+          $ref: "#/components/schemas/Speed"
+    Speed:
+      type: integer
+      enum: [1, 2]
