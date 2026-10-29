@@ -1,6 +1,6 @@
 # Kotlin client: an inline number enum is serialized as a string
 
-With `serializationLibrary=kotlinx_serialization`, a number enum declared inline on a property (`plays: { type: integer, enum: [1, 2] }`) becomes a nested enum class with `@SerialName("1")` and no value serializer. kotlinx.serialization then writes it as the string `"1"` and can't read the number `1` the API sends. The same enum declared as its own schema (`Speed`) works, since #21746 gave `enum_class.mustache` a value serializer for every non-string enum; `data_class.mustache`, which renders inline enums, only adds one when `enumUnknownDefaultCase` is on.
+With `serializationLibrary=kotlinx_serialization`, a number enum declared inline on a property (`plays: { type: integer, enum: [1, 2] }`) becomes a nested enum class with `@SerialName("1")` and no value serializer. kotlinx.serialization then writes it as the string `"1"` and can't read the number `1` the API sends. The same enum declared as its own schema (`Speed`) works, since [#21746](https://github.com/OpenAPITools/openapi-generator/pull/21746) gave `enum_class.mustache` a value serializer for every non-string enum; `data_class.mustache`, which renders inline enums, only adds one when `enumUnknownDefaultCase` is on.
 
 ## Reproduction
 
