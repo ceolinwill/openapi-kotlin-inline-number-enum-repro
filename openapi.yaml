@@ -16,13 +16,16 @@ components:
   schemas:
     Recording:
       type: object
-      required: [plays, speed]
+      required: [plays, speed, volume]
       properties:
         plays:
           type: integer
           enum: [1, 2]
         speed:
           $ref: "#/components/schemas/Speed"
+        volume:
+          type: number
+          enum: [0.5, 1]
     Speed:
       type: integer
       enum: [1, 2]

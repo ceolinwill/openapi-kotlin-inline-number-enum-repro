@@ -2,7 +2,7 @@
   "name": "openapi-kotlin-inline-number-enum-repro",
   "private": true,
   "scripts": {
-    "generate": "openapi-generator-cli generate -i openapi.yaml -g kotlin -o generated --additional-properties=serializationLibrary=kotlinx_serialization,packageName=repro",
+    "generate": "openapi-generator-cli generate -i openapi.yaml -g kotlin -o generated --additional-properties=serializationLibrary=kotlinx_serialization,packageName=repro --type-mappings=number=kotlin.Double",
     "repro": "npm run generate && ./gradlew --quiet run"
   },
   "devDependencies": {

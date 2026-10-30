@@ -2,6 +2,9 @@
   "$schema": "./node_modules/@openapitools/openapi-generator-cli/config.schema.json",
   "spaces": 2,
   "generator-cli": {
-    "version": "7.26.0"
+    "version": "7.27.0-20261030.091743-151",
+    "repository": {
+      "downloadUrl": "https://central.sonatype.com/repository/maven-snapshots/org/openapitools/openapi-generator-cli/7.27.0-SNAPSHOT/openapi-generator-cli-7.27.0-20261030.091743-151.jar"
+    }
   }
 }
