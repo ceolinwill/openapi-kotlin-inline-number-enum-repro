@@ -1,6 +1,6 @@
 # Kotlin client: an inline number enum is serialized as a string
 
-Reported in https://github.com/OpenAPITools/openapi-generator/issues/25459.
+Reported in https://github.com/OpenAPITools/openapi-generator/issues/25588 (a follow-up to https://github.com/OpenAPITools/openapi-generator/issues/25459).
 
 With `serializationLibrary=kotlinx_serialization`, a number enum declared inline on a property becomes a nested enum class with `@SerialName("…")` and no value serializer, so kotlinx.serialization writes it as a string and can't read the number the API sends. [#25473](https://github.com/OpenAPITools/openapi-generator/pull/25473) fixed this for `type: integer` (`plays`), but it skips `type: number`. With `number` mapped to `kotlin.Double` (`--type-mappings=number=kotlin.Double`), `volume: { type: number, enum: [0.5, 1] }` is still written as `"0.5"`.
 
