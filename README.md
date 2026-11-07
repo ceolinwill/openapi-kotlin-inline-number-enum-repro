@@ -13,14 +13,14 @@ npm install
 npm run repro
 ```
 
-Output with the `7.27.0-20261030.091743-151` snapshot (published after #25473 merged):
+Output with `7.27.0` (released with #25473):
 
 ```
 encoded: {"plays":1,"speed":1,"volume":"0.5"}
 decoded: JsonDecodingException: Unexpected JSON token at offset 30: Expected quotation mark '"', but had '0' instead at path: $.volume
 ```
 
-`npm run repro` generates the client from [openapi.yaml](openapi.yaml) (`-g kotlin`, `serializationLibrary=kotlinx_serialization`, `--type-mappings=number=kotlin.Double`), then compiles only the generated models with [Main.kt](src/main/kotlin/Main.kt), which encodes a `Recording` and decodes `{"plays":1,"speed":1,"volume":0.5}`. [openapitools.json](openapitools.json) pins the snapshot jar; its SHA256 is `aa5f6609f715edff1a8701ff8ad1eb608fb6eed9973efe339e3b15fb7659591d` (`shasum -a 256 node_modules/@openapitools/openapi-generator-cli/versions/*.jar`).
+`npm run repro` generates the client from [openapi.yaml](openapi.yaml) (`-g kotlin`, `serializationLibrary=kotlinx_serialization`, `--type-mappings=number=kotlin.Double`), then compiles only the generated models with [Main.kt](src/main/kotlin/Main.kt), which encodes a `Recording` and decodes `{"plays":1,"speed":1,"volume":0.5}`. [openapitools.json](openapitools.json) pins the `7.27.0` jar from Maven Central; its SHA256 is `db9c4b738727698748746144394cb7ee96512fe50166555baaeeca9311ee1dba` (`shasum -a 256 node_modules/@openapitools/openapi-generator-cli/versions/*.jar`).
 
 On 7.26.0, `plays` failed the same way; #25473 fixed it.
 
@@ -39,6 +39,6 @@ In `kotlin-client/data_class.mustache`, both the `(with = {{nameInPascalCase}}Se
 
 ## Environment
 
-- openapi-generator `7.27.0-20261030.091743-151` (snapshot), through `@openapitools/openapi-generator-cli` 2.42.0
+- openapi-generator `7.27.0`, through `@openapitools/openapi-generator-cli` 2.42.0
 - Kotlin 2.4.0, kotlinx-serialization-json 1.11.0, Gradle 9.8.2, JDK 25
 - macOS 27
